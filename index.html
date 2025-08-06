@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FuncLexa e-Shopping - Online Shopping</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .hero-bg {
+      background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50">
+  <!-- **Navigation Menu (Fixed & Interactive)** -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="#" class="text-xl font-bold text-indigo-600">FuncLexa e-shopping</a>
+        </div>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600">Home</a>
+          <a href="#products" class="nav-link text-gray-700 hover:text-indigo-600">Products</a>
+          <a href="#deals" class="nav-link text-gray-700 hover:text-indigo-600">Deals</a>
+          <a href="#categories" class="nav-link text-gray-700 hover:text-indigo-600">Categories</a>
+          <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600">Contact</a>
+          <a href="#" class="flex items-center text-gray-700 hover:text-indigo-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            <span class="ml-1">Cart (0)</span>
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (Hidden by Default) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+      <div class="px-2 pt-2 pb-3 space-y-2 sm:px-3">
+        <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Home</a>
+        <a href="#products" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Products</a>
+        <a href="#deals" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Deals</a>
+        <a href="#categories" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Categories</a>
+        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
+        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+          Cart (0)
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- **Hero Section (Main Banner)** -->
+  <section id="home" class="hero-bg text-white pt-32 pb-20 md:pt-40 md:pb-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="md:flex items-center justify-between">
+        <div class="md:w-1/2 mb-12 md:mb-0">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Summer Sale is Live!</h1>
+          <p class="text-xl md:text-2xl mb-6 opacity-90">Get 50% off on selected items. Limited time offer.</p>
+          <a href="#products" class="px-6 py-3 bg-white text-indigo-600 rounded-md font-medium hover:bg-gray-100 transition-colors duration-200 inline-block">
+            Shop Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- **Featured Products** -->
+  <section id="products" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Product 1 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="h-48 bg-gray-200 flex items-center justify-center">
+            <img src="https://www.leafstudios.in/cdn/shop/files/1_a43c5e0b-3a47-497d-acec-b4764259b10e_800x.png?v=1750486829" alt="Product 1" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Wireless Headphones</h3>
+            <p class="text-gray-600 mb-3">Premium sound quality</p>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-indigo-600">4999rs</span>
+              <button class="px-3 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="h-48 bg-gray-200 flex items-center justify-center">
+            <img src="https://m.media-amazon.com/images/I/61pIzNaNRWL._UF1000,1000_QL80_.jpg" alt="Product 2" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Smart Watch</h3>
+            <p class="text-gray-600 mb-3">Fitness & health tracker</p>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-indigo-600">2999rs</span>
+              <button class="px-3 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="h-48 bg-gray-200 flex items-center justify-center">
+            <img src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/34393240/2025/6/17/24240073-0d9b-461b-9d64-5bdda96db17b1750145500661-BOULT-AUDIO-Bassbox-Q5-Upto-18H-Battery-WIth-5W-Bass-Output--1.jpg" alt="Product 3" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Bluetooth Speaker</h3>
+            <p class="text-gray-600 mb-3">Portable & waterproof</p>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-indigo-600">9999rs</span>
+              <button class="px-3 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="h-48 bg-gray-200 flex items-center justify-center">
+            <img src="https://m.media-amazon.com/images/I/71R9+FQKHTL._UY1100_.jpg" alt="Product 4" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Laptop Backpack</h3>
+            <p class="text-gray-600 mb-3">Stylish & durable</p>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-indigo-600">4999rs</span>
+              <button class="px-3 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- **Deals Section** -->
+  <section id="deals" class="py-16 bg-indigo-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Today's Best Deals</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Deal 1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <div class="md:flex">
+            <div class="md:w-1/2 h-64 bg-gray-200 flex items-center justify-center">
+              <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iBLEUqi_VTvI/v1/-1x-1.webp" alt="Deal 1" class="w-full h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-6">
+              <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm font-medium mb-2 inline-block">50% OFF</span>
+              <h3 class="text-xl font-bold mb-2">Smartphone X Pro</h3>
+              <p class="text-gray-600 mb-4">Flagship performance at half price.</p>
+              <div class="flex items-center mb-4">
+                <span class="text-2xl font-bold text-indigo-600">79999rs</span>
+                <span class="ml-2 text-gray-500 line-through">89999rs</span>
+              </div>
+              <button class="w-full py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Deal 2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <div class="md:flex">
+            <div class="md:w-1/2 h-64 bg-gray-200 flex items-center justify-center">
+              <img src="https://images.indianexpress.com/2023/08/samsung-110-inch-microled-tv.jpg" alt="Deal 2" class="w-full h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-6">
+              <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm font-medium mb-2 inline-block">30% OFF</span>
+              <h3 class="text-xl font-bold mb-2">4K Smart TV</h3>
+              <p class="text-gray-600 mb-4">Crystal clear picture quality.</p>
+              <div class="flex items-center mb-4">
+                <span class="text-2xl font-bold text-indigo-600">259999rs</span>
+                <span class="ml-2 text-gray-500 line-through">299999rs</span>
+              </div>
+              <button class="w-full py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- **Footer** -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">FuncLexa e-shopping</h3>
+          <p class="text-gray-400">Your one-stop shop for the best deals.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white">Products</a></li>
+            <li><a href="#deals" class="text-gray-400 hover:text-white">Deals</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Customer Service</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2023 FuncLexa e-Shopping. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- **JavaScript for Interactive Navbar** -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.getElementById('navbar');
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      // Change navbar style on scroll
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('bg-white', 'shadow-md', 'border-gray-200');
+          navbar.classList.remove('bg-white/90', 'border-gray-200/50');
+        } else {
+          navbar.classList.add('bg-white/90', 'border-gray-200/50');
+          navbar.classList.remove('bg-white', 'shadow-md', 'border-gray-200');
+        }
+      });
+      
+      // Toggle mobile menu
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
